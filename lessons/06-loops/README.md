@@ -1,0 +1,20 @@
+# 06. 반복문
+
+## 배우는 것
+
+- `N번 반복한다`
+- 범위 반복 (`까지`, `미만`)
+- 조건 반복 (`반복 (조건)`)
+
+## 실행
+
+```sh
+kingsejong lessons/06-loops/main.ksj
+```
+
+기대하는 출력은 [`expected.out`](expected.out) 에 있습니다.
+
+## 연습 문제
+
+1. 1부터 100까지 홀수의 합을 구해 보세요.
+2. 구구단 전체(2단부터 9단)를 출력해 보세요. 답은 `projects/multiplication-table` 에 있습니다.
