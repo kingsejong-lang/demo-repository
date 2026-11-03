@@ -1,6 +1,6 @@
 # KingSejong 예제로 배우기
 
-[![Examples](https://github.com/kingsejong-lang/demo-repository/actions/workflows/examples.yml/badge.svg)](https://github.com/kingsejong-lang/demo-repository/actions/workflows/examples.yml)
+[![Examples](https://github.com/kingsejong-lang/kingsejong-examples/actions/workflows/examples.yml/badge.svg)](https://github.com/kingsejong-lang/kingsejong-examples/actions/workflows/examples.yml)
 
 한글 문법 프로그래밍 언어 [KingSejong](https://github.com/kingsejong-lang/kingsejong-lang) 을
 작은 예제로 하나씩 배우는 저장소입니다. "Hello, World" 부터 시작해 한 레슨에 개념 하나씩
