@@ -22,7 +22,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        ref: [v0.6.0, main]
+        ref: [v0.7.0, main]
 
     steps:
     - name: Checkout examples
