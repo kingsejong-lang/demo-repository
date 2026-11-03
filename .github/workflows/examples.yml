@@ -1,0 +1,67 @@
+name: Examples
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    # Every Monday, so a change in kingsejong main that breaks an example shows up
+    - cron: '0 3 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: Run examples (kingsejong ${{ matrix.ref }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    # The latest release must pass; main is a preview of the next release
+    continue-on-error: ${{ matrix.ref == 'main' }}
+    strategy:
+      fail-fast: false
+      matrix:
+        ref: [v0.6.0, main]
+
+    steps:
+    - name: Checkout examples
+      uses: actions/checkout@v7
+
+    - name: Checkout kingsejong ${{ matrix.ref }}
+      uses: actions/checkout@v7
+      with:
+        repository: kingsejong-lang/kingsejong-lang
+        ref: ${{ matrix.ref }}
+        path: kingsejong
+
+    - name: Resolve kingsejong commit
+      id: ksj
+      run: echo "sha=$(git -C kingsejong rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
+    - name: Cache interpreter build
+      id: cache
+      uses: actions/cache@v6
+      with:
+        path: kingsejong/build/bin/kingsejong
+        key: kingsejong-${{ runner.os }}-${{ steps.ksj.outputs.sha }}
+
+    - name: Install compiler
+      if: steps.cache.outputs.cache-hit != 'true'
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y g++-13
+        sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-13 100
+
+    - name: Build kingsejong
+      if: steps.cache.outputs.cache-hit != 'true'
+      run: |
+        cmake -S kingsejong -B kingsejong/build -DCMAKE_BUILD_TYPE=Release
+        cmake --build kingsejong/build --target kingsejong -j
+
+    - name: Check examples
+      env:
+        KSJ: ${{ github.workspace }}/kingsejong/build/bin/kingsejong
+      run: |
+        "$KSJ" --version
+        scripts/check.sh

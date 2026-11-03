@@ -2,7 +2,9 @@ name: Auto Assign
 on:
   issues:
     types: [opened]
-  pull_request:
+  # pull_request_target so PRs from forks get a token that can assign;
+  # this workflow never checks out PR code
+  pull_request_target:
     types: [opened]
 jobs:
   run:
@@ -12,7 +14,8 @@ jobs:
       pull-requests: write
     steps:
     - name: 'Auto-assign issue'
-      uses: pozil/auto-assign-issue@v1
+      # Third-party action pinned to a commit; v4.1.0
+      uses: pozil/auto-assign-issue@d6e511896e5f1d2408e74db74416647d8ff80c8c
       with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           assignees: onlyhyde
