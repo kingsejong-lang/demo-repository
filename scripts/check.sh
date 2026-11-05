@@ -5,6 +5,9 @@
 #   KSJ=/path/to/kingsejong scripts/check.sh           # check
 #   KSJ=/path/to/kingsejong scripts/check.sh --update  # rewrite expected.out
 #
+# An example with a `next` file uses features newer than the latest release.
+# Set SKIP_NEXT=1 to skip those when KSJ is a release build.
+#
 # KSJ must be a path (not a bare command name) so the interpreter can find
 # its bundled stdlib/ relative to its own location.
 set -uo pipefail
@@ -16,11 +19,18 @@ update=0
 cd "$(dirname "$0")/.."
 failed=0
 total=0
+skipped=0
 difffile="$(mktemp)"
 trap 'rm -f "$difffile"' EXIT
 
 for src in lessons/*/main.ksj projects/*/main.ksj; do
     dir="$(dirname "$src")"
+
+    if [[ -n "${SKIP_NEXT:-}" && -e "$dir/next" ]]; then
+        echo "skip $dir: needs a newer release"
+        skipped=$((skipped + 1))
+        continue
+    fi
     total=$((total + 1))
 
     if ! actual="$("$KSJ" "$src" 2>&1)"; then
@@ -55,5 +65,5 @@ for src in lessons/*/main.ksj projects/*/main.ksj; do
 done
 
 echo
-echo "$((total - failed))/$total passed"
+echo "$((total - failed))/$total passed, $skipped skipped"
 [[ $failed -eq 0 ]]
