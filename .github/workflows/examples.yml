@@ -62,6 +62,8 @@ jobs:
     - name: Check examples
       env:
         KSJ: ${{ github.workspace }}/kingsejong/build/bin/kingsejong
+        # Examples marked with a `next` file need features newer than the release
+        SKIP_NEXT: ${{ matrix.ref != 'main' && '1' || '' }}
       run: |
         "$KSJ" --version
         scripts/check.sh
