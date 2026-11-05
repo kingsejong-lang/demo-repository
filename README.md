@@ -75,4 +75,4 @@ KSJ=../kingsejong-lang/build/bin/kingsejong scripts/check.sh
 
 ## 라이선스
 
-[MIT](LICENSE)
+[MIT-0](LICENSE) (MIT No Attribution). 예제 코드를 저작권 고지 없이 복사해 자기 프로그램에 써도 됩니다. KingSejong 인터프리터 자체는 [MIT](https://github.com/kingsejong-lang/kingsejong-lang/blob/main/LICENSE) 입니다.
