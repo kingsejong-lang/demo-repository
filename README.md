@@ -6,7 +6,7 @@
 작은 예제로 하나씩 배우는 저장소입니다. "Hello, World" 부터 시작해 한 레슨에 개념 하나씩
 익히고, 마지막에 실습 프로그램을 만듭니다.
 
-모든 예제는 CI 에서 KingSejong 최신 릴리스(v0.7.0)로 실행해 `expected.out` 과 출력이 같은지 확인합니다. 다음 릴리스의 기능을 쓰는 레슨(폴더에 `next` 파일이 있음)은 KingSejong `main` 으로만 확인합니다.
+모든 예제는 CI 에서 KingSejong 최신 릴리스(v0.8.0)로 실행해 `expected.out` 과 출력이 같은지 확인합니다. 다음 릴리스의 기능을 쓰는 레슨(폴더에 `next` 파일이 있음)은 KingSejong `main` 으로만 확인합니다.
 
 ## 준비
 
@@ -43,14 +43,12 @@ cd kingsejong-lang
 | [14](lessons/14-exceptions) | 예외 처리 | `시도` / `오류` / `마지막` |
 | [15](lessons/15-modules) | 모듈 | `가져오기`, 표준 라이브러리 |
 | [16](lessons/16-async) | 비동기 | `비동기 함수`, `대기` |
-| [17](lessons/17-characters) | 글자 다루기 * | `s[i]`, `문자코드`, `코드문자` |
-| [18](lessons/18-bits) | 비트 연산 * | `0x`·`0b` 리터럴, `&` `\|` `^` `~` `<<` `>>` |
-| [19](lessons/19-for-each) | 요소 반복 * | `각각에 대해` |
-| [20](lessons/20-sorting) | 비교 함수로 정렬하기 * | `정렬한다(비교 함수)`, `길이(사전)` |
-| [21](lessons/21-command-line) | 명령줄 인자 * | `명령줄_인자()` |
-| [22](lessons/22-private-names) | 모듈의 비공개 이름 * | `_` 로 시작하는 이름, 같은 폴더의 모듈 |
-
-\* 표시한 레슨은 v0.7.0 다음 릴리스의 기능을 씁니다. 지금은 KingSejong `main` 을 빌드해야 실행됩니다.
+| [17](lessons/17-characters) | 글자 다루기 | `s[i]`, `문자코드`, `코드문자` |
+| [18](lessons/18-bits) | 비트 연산 | `0x`·`0b` 리터럴, `&` `\|` `^` `~` `<<` `>>` |
+| [19](lessons/19-for-each) | 요소 반복 | `각각에 대해` |
+| [20](lessons/20-sorting) | 비교 함수로 정렬하기 | `정렬한다(비교 함수)`, `길이(사전)` |
+| [21](lessons/21-command-line) | 명령줄 인자 | `명령줄_인자()` |
+| [22](lessons/22-private-names) | 모듈의 비공개 이름 | `_` 로 시작하는 이름, 같은 폴더의 모듈 |
 
 각 레슨 폴더에는 예제(`main.ksj`), 기대 출력(`expected.out`), 설명과 연습 문제(`README.md`)가 있습니다.
 
