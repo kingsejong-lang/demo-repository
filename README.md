@@ -48,6 +48,7 @@ cd kingsejong-lang
 | [19](lessons/19-for-each) | 요소 반복 | `각각에 대해` |
 | [20](lessons/20-sorting) | 비교 함수로 정렬하기 | `정렬한다(비교 함수)`, `길이(사전)` |
 | [21](lessons/21-command-line) | 명령줄 인자 | `명령줄_인자()` |
+| [22](lessons/22-private-names) | 모듈의 비공개 이름 | `_` 로 시작하는 이름, 같은 폴더의 모듈 |
 
 각 레슨 폴더에는 예제(`main.ksj`), 기대 출력(`expected.out`), 설명과 연습 문제(`README.md`)가 있습니다.
 
